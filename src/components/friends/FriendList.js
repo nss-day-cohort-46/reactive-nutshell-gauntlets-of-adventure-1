@@ -13,9 +13,11 @@ export const FriendList = () => {
         // console.log("FriendList")
         getFriends()
     }, [])
+//   The useEffect hook allows the component to reach out into the world for anything 
+//   that cannot be handled during render. In this case, it is the API call for the friends.
 
     // Use the .map() array method to iterate the array of animals and 
-    // generate HTML for each one by invoking the AnimalCard component function.
+    // generate HTML for each one by invoking the FriendCard component function.
     return (
         <div className="friends">
             {/* {console.log("friends list render", friends)} */}
