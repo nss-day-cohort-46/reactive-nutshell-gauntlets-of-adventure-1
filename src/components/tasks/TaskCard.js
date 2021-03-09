@@ -1,21 +1,35 @@
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 import { TaskContext } from "./TaskProvider";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import "./Tasks.css"
 
 export const TaskCard = ({ task }) => {
-    const {completeTask, deleteTask, updateTask} = useContext(TaskContext)
+    const {completeTask, deleteTask, updateTask, getTaskById} = useContext(TaskContext)
     const history = useHistory()
-    const complete = () => {
+    const {taskId} = useParams();
+    const [tasks, setTasks] = useState({})
+
+    const handleComplete = () => {
         completeTask(task.id)
     }
     const handleDelete = () => {
-      // debugger
-      deleteTask(task.id)
+      debugger
+      deleteTask(tasks.id)
+      .then(() => {
+        history.push(`/tasks`)
+      })
     }
-    const update = () => {
+    const handleUpdate = () => {
       updateTask(task.id)
     }
+
+    useEffect(() => {
+      // console.log("useEffect", newsArticleId)
+      getTaskById(taskId)
+      .then((response) => {
+        setTasks(response)
+      })
+      }, [])
 
     return (
       <section className="task">
@@ -23,10 +37,9 @@ export const TaskCard = ({ task }) => {
         <div className="task__date">Expected Completion: { task.expectedCompletion }</div>
         <div className="task__details">Details: { task.taskDetails }</div>
         <div className="completed">Completed: {String(task.completed)}</div>
-        <button key={task.id} onClick={complete}>Completed Task</button> 
+        <button key={task.id} onClick={handleComplete}>Completed Task</button> 
         <button onClick={handleDelete}>Delete Task</button>
-        <button onClick={update}>Edit Task</button>
+        <button onClick={handleUpdate}>Edit Task</button>
+        <button onClick={() => {history.push(`tasks/edit/${task.id}`)}}></button>
     </section>
   )}
-
-  // (event) => history.push(`tasks/edit/${task.id}`)
