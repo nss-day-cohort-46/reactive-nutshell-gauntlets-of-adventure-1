@@ -37,10 +37,34 @@ export const TaskProvider = (props) => {
             .then(getTasks)
     }
 
+    const completeTask = (taskId) => {
+        return fetch(`http://localhost:8088/tasks/${taskId}`,{
+            method:"PATCH",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body: JSON.stringify({
+                completed:true
+            })
+        })
+        .then(()=>getTasks(parseInt(sessionStorage.getItem("nutshell_user"))))
+    }
+
+    const updateTask = (task) => {
+        return fetch(`http://localhost:8088/tasks/edit/${task.id}`, {
+            method:"PUT",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body: JSON.stringify(task)
+        })
+        .then(()=>getTasks(parseInt(sessionStorage.getItem("nutshell_user"))))
+    }
+
     return (
         <TaskContext.Provider value={{
-            tasks, getTasks, addTask, getTaskById, deleteTask,
-        }}>
+            tasks, getTasks, getTaskById, addTask, deleteTask, completeTask, updateTask 
+            }}>
             {props.children}
         </TaskContext.Provider>
     )

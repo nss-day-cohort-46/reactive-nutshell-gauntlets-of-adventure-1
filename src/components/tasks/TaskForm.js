@@ -11,7 +11,7 @@ export const TaskForm = () => {
         name: "",
         taskDetails: "",
         expectedCompletion: "",
-        completed: true
+        completed: false
     })
 
     const handleInputChange = (event) => {
@@ -41,7 +41,7 @@ export const TaskForm = () => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="date">Expected Completion Date: </label>
-                    <input type="date" id="date" onChange={handleInputChange} required className="form-control" placeholder="Task Date" value={task.expectedCompletion} />
+                    <input type="date" id="expectedCompletion" onChange={handleInputChange} required className="form-control" placeholder="Task Date" value={task.expectedCompletion} />
                 </div>
             </fieldset>
             <button className="btn btn-primary"
