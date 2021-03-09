@@ -1,4 +1,4 @@
-import React, { useState, createContext } from "react"
+import React, { useState, createContext, useEffect } from "react"
 
 export const FriendContext = createContext()
 //Nothing is stored in the context when it's defined. At this point, 
@@ -7,8 +7,8 @@ export const FriendContext = createContext()
 export const FriendProvider = (props) => {
     const [friends, setFriends] = useState([])
     // console.log('friends: ', friends);
-    useState() 
-    //hook to define a variable that holds the state of the component, 
+    const [userFriends, setUserFriends] = useState([])
+    //useState hook to define a variable that holds the state of the component, 
     //and a function that updates it.
     
     const getFriends = () => {
@@ -16,11 +16,30 @@ export const FriendProvider = (props) => {
         .then(res => res.json())
         .then(setFriends)
     }
+    const currentUserFriends = () =>{
+        return friends.filter(friend => friend.currentUserId === parseInt(sessionStorage.nutshell_user))
+    }
+    useEffect(() => {
+        // console.log("FriendList")
+        setUserFriends(currentUserFriends())
+        
+    }, [friends])
+
+    const addFriend = friendObj => {
+        return fetch("http://localhost:8088/friends", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(friendObj)
+        })
+        .then(getFriends)
+    }
     
 
     return (
         <FriendContext.Provider value={{
-            friends, getFriends
+            friends, getFriends, addFriend, userFriends
         }}>
             {props.children}
         </FriendContext.Provider>

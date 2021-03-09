@@ -1,14 +1,17 @@
-import React, { useContext, useEffect } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { FriendCard } from "./Friend"
 import { FriendContext } from "./FriendProvider"
 
 export const FriendList = () => {
 
-    const { friends, getFriends } = useContext(FriendContext)
+    const { userFriends, getFriends, } = useContext(FriendContext)
+    
+    const currentUser = sessionStorage.getItem("nutshell_userName")
+    console.log('currentUser: ', currentUser);
     //import the context object created in the provider component so that 
     // the Context hook can access the objects it exposes.
     // This state changes when `getFriends()` is invoked below
-
+    
     useEffect(() => {
         // console.log("FriendList")
         getFriends()
@@ -21,8 +24,9 @@ export const FriendList = () => {
     return (
         <div className="friends">
             {/* {console.log("friends list render", friends)} */}
-            {
-                friends.map(friend => {
+            <h3>{currentUser}'s Friends</h3>
+            {   
+                userFriends.map(friend => {
                     return <FriendCard key={friend.id} friend={friend} />
                 })
             }
