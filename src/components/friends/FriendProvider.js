@@ -19,11 +19,13 @@ export const FriendProvider = (props) => {
     const currentUserFriends = () =>{
         return friends.filter(friend => friend.currentUserId === parseInt(sessionStorage.nutshell_user))
     }
+    //currentUserFriends fucntion filters the friends array of obj to return only sessionStorage user data friends
     useEffect(() => {
         // console.log("FriendList")
         setUserFriends(currentUserFriends())
         
     }, [friends])
+// This useEffect takes the setUserFriends and sets the currentUserFriends value to it.
 
     const addFriend = friendObj => {
         return fetch("http://localhost:8088/friends", {
