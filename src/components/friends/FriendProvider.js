@@ -10,12 +10,16 @@ export const FriendProvider = (props) => {
     const [userFriends, setUserFriends] = useState([])
     //useState hook to define a variable that holds the state of the component, 
     //and a function that updates it.
-    
+    const [ searchTerms, setSearchTerms ] = useState("")
+
+
     const getFriends = () => {
         return fetch("http://localhost:8088/friends?_expand=user")
         .then(res => res.json())
         .then(setFriends)
     }
+
+//--------------------------------------------------------------
     const currentUserFriends = () =>{
         return friends.filter(friend => friend.currentUserId === parseInt(sessionStorage.nutshell_user))
     }
@@ -26,6 +30,7 @@ export const FriendProvider = (props) => {
         
     }, [friends])
 // This useEffect takes the setUserFriends and sets the currentUserFriends value to it.
+//---------------------------------------------------------------------
 
     const addFriend = friendObj => {
         return fetch("http://localhost:8088/friends", {
@@ -41,7 +46,7 @@ export const FriendProvider = (props) => {
 
     return (
         <FriendContext.Provider value={{
-            friends, getFriends, addFriend, userFriends
+            friends, getFriends, addFriend, userFriends, searchTerms, setSearchTerms
         }}>
             {props.children}
         </FriendContext.Provider>

@@ -7,6 +7,7 @@ export const UserContext = createContext()
 
 export const UserProvider = (props) => {
     const [users, setUsers] = useState([])
+    const [ searchTerms, setSearchTerms ] = useState("")
 
 //useState hook to define a variable that holds the state of the component, 
 //and a function that updates it.
@@ -17,7 +18,7 @@ export const UserProvider = (props) => {
     }
     return (
         <UserContext.Provider value={{
-            users, getUsers
+            users, getUsers, searchTerms, setSearchTerms
         }}>
             {props.children}
         </UserContext.Provider>
