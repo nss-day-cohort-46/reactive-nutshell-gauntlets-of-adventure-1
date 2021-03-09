@@ -1,8 +1,13 @@
 .task {
     background: #fff;
-    text-align: center;
+    text-align: start;
     line-height: 2;
     margin: 5rem;
     border-radius: 10px;
     box-shadow: 1px 1px #333;
+    }
+
+    .tasks__header {
+        background: #fff;
+        text-align: center;
     }

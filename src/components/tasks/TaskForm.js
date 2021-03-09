@@ -9,6 +9,7 @@ export const TaskForm = () => {
     const [task, setTask] = useState({
         userId: 1,
         name: "",
+        taskDetails: "",
         expectedCompletion: "",
         completed: true
     })
@@ -29,6 +30,12 @@ export const TaskForm = () => {
                 <div className="form-group">
                     <label htmlFor="name">Task Name:</label>
                     <input type="text" id="name" onChange={handleInputChange} required autoFocus className="form-control" placeholder="Task name" value={task.name} />
+                </div>
+            </fieldset>
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="taskDetails">Task Details: </label>
+                    <textarea type="text" id="taskDetails" onChange={handleInputChange} required className="form-control" placeholder="Task Details" value={task.taskDetails} ></textarea>
                 </div>
             </fieldset>
             <fieldset>
