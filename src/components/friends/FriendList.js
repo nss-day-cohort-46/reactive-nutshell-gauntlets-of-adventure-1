@@ -1,0 +1,29 @@
+import React, { useContext, useEffect } from "react"
+import { FriendCard } from "./Friend"
+import { FriendContext } from "./FriendProvider"
+
+export const FriendList = () => {
+
+    const { friends, getFriends } = useContext(FriendContext)
+    //import the context object created in the provider component so that 
+    // the Context hook can access the objects it exposes.
+    // This state changes when `getFriends()` is invoked below
+
+    useEffect(() => {
+        // console.log("FriendList")
+        getFriends()
+    }, [])
+
+    // Use the .map() array method to iterate the array of animals and 
+    // generate HTML for each one by invoking the AnimalCard component function.
+    return (
+        <div className="friends">
+            {/* {console.log("friends list render", friends)} */}
+            {
+                friends.map(friend => {
+                    return <FriendCard key={friend.id} friend={friend} />
+                })
+            }
+        </div>
+    )
+}
