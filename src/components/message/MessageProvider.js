@@ -8,13 +8,16 @@ export const MessageProvider = (props) => {
     const [messages, setMessages] = useState([])
 
     const getMessages = () => {
-        return fetch("http://localhost:8088/messages?_expand=location")
+        return fetch("http://localhost:8088/messages?_expand=user")
         .then(res => res.json())
-        .then(setMessages)
+        .then(sorted => {
+            sorted = sorted.sort((a,b)=>Date.parse(a.timestamp)-Date.parse(b.timestamp))
+            setMessages(sorted)
+        })
     }
 
     const getMessageById = (id) => {
-        return fetch(`http://localhost:8088/messages/${id}?_expand=location`)
+        return fetch(`http://localhost:8088/messages/${id}?_expand=user`)
             .then(res => res.json())
     }
 

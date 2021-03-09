@@ -1,0 +1,12 @@
+.message{
+    /* border: black 1px solid; */
+    max-width:500px;
+    color: black;
+    margin: 10;
+
+}.message__head{
+    /* border: black 1px solid;
+    max-width:500px; */
+    size:2em;
+    color: gray;
+}
