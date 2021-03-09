@@ -17,7 +17,7 @@ export const TaskList = () => {
                 <h2>Tasks:</h2>
             </header>
             <section className="tasks__addTaskButton">   
-                <button onClick={() => history.push("/tasks/create")}>Add Task</button>
+                <button onClick={() => history.push("/tasks/create")}>Create New Task</button>
             </section>
             <div className="tasks">
                 {tasks?.map(task => <TaskCard key={task.id} task={task} />)}
