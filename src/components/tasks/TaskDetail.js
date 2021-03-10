@@ -39,7 +39,6 @@ export const TaskDetail = ({ task }) => {
         <div className="completed">Completed: {String(task.completed)}</div>
         <button key={task.id} onClick={handleComplete}>Completed Task</button> 
         <button onClick={handleDelete}>Delete Task</button>
-        <button onClick={handleUpdate}>Edit Task</button>
-        <button onClick={() => {history.push(`tasks/edit/${task.id}`)}}></button>
+        <button onClick={() => {history.push(`tasks/edit/${task.id}`)}}>Edit Task</button>
     </section>
   )}
