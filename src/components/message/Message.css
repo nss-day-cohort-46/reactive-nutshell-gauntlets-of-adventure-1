@@ -2,7 +2,7 @@
     /* border: red 1px solid; */
     max-width:400px;
     color: black;
-    margin: 10;
+    margin: 10px;
 }
 
 .messageList{
@@ -18,7 +18,7 @@
     max-height:350px;
     max-width:500px;
     color: black;
-    margin: 10;
+    margin: 10px;
     display:flex;
     align-items: center;
 }
@@ -28,8 +28,7 @@
 }
 
 .message__head{
-    /* border: black 1px solid;
-    max-width:500px; */
-    size:2em;
+    /* border: black 1px solid; */
+    font-size:11px;
     color: gray;
 }

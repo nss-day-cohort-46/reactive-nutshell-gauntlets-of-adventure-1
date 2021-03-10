@@ -52,14 +52,14 @@ const handleClickSaveMessage = (event) => {
             <fieldset>
             <div className="form-group">
                 {/* <label htmlFor="text">New Message:</label> */}
-                <input
+                <textarea
                 type="text"
                 id="text"
                 onChange={handleControlledInputChange}
                 className="form-control"
-                placeholder="New Message"
-                value={message.text}
-                />
+                placeholder="New Message">
+                {message.text}
+                </textarea>
             </div>
             </fieldset>
             <button className="btn btn-primary" onClick={handleClickSaveMessage}>
