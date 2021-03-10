@@ -7,7 +7,7 @@
 
 .messageList{
     /* border: yellow 1px solid; */
-    max-width:500px;
+    width:600px;
     color: black;
     margin: 10;
 }
@@ -23,8 +23,15 @@
     align-items: center;
 }
 
-.message__delete{
+.message__colLeft{
+    /* border: blue 1px solid; */
+    margin-right: auto;
+    /* width:500 */
+}
+.message__colRight{
+    /* border: blue 1px solid; */
     margin-left: auto;
+    /* width:100 */
 }
 
 .message__head{

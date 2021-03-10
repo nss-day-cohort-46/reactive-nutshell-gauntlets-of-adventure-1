@@ -27,13 +27,13 @@ export const MessageCard = ({ message }) => {
 
     return(
     <div className="messageCard">
-    <div>
+    <div className="message__colLeft">
         <div className="message__head">{message.user.name} - {timeConverter(message.timestamp)}</div>
         <div className="message__text">
             { message.text }
         </div>
     </div>
-        <div className="message__delete">
+        <div className="message__colRight">
             { message.userId===parseInt(sessionStorage.getItem("nutshell_user")) ? 
                 <button id={message.id} onClick={handleDelete} className="btn btn-primary">X</button>
             : ""}
