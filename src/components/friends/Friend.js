@@ -1,9 +1,21 @@
-import React from "react"
+import React, { useContext, useEffect, useState } from "react"
+import { useParams } from "react-router"
+import { FriendContext } from "./FriendProvider"
 
 
-export const FriendCard = ({ friend }) => (
+export const FriendCard = ({ friend }) => {
+
+    const {deleteFriend} = useContext(FriendContext)
+    
+
+    const HandleDeleteFriend = () => {
+
+    deleteFriend(friend.id)
+}
+
+return (
     <section className="friend">
         <h3 className="friend__name">{friend.user.name}</h3>
-        <button>Delete Friend</button>
+        <button onClick={HandleDeleteFriend}>Delete Friend</button>
     </section>
-)
+)}

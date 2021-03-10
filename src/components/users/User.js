@@ -6,8 +6,7 @@ import { FriendContext, FriendProvider } from "../friends/FriendProvider"
 
 export const UserCard = ({ user }) => {
     const {addFriend} = useContext(FriendContext)
-
-
+    
     const handleSaveFriend = () => {
         const currentUser = sessionStorage.getItem("nutshell_user")
         addFriend({
@@ -15,6 +14,7 @@ export const UserCard = ({ user }) => {
             currentUserId: parseInt(currentUser)
         })
     }
+
     // this event handler tells the button below that if clicked to add the friend to the 
     // array of friends as an object with the defined key variables above.
     
