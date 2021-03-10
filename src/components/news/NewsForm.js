@@ -108,19 +108,7 @@ export const NewsForm = () => {
               <input type="text" id="url" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Articles url" value={newsArticle.url}/>
           </div>
         </fieldset>
-        {/* <fieldset>
-          <div className="form-group">
-            <label htmlFor="user">User: </label>
-            <select value={newsArticle.userId} id="userId" className="form-control" onChange={handleControlledInputChange}>
-              <option value="0">Select a user</option>
-              {users.map(c => (
-                <option key={c.id} value={c.id}>
-                    {c.name}
-                </option>
-              ))}
-            </select>
-          </div>
-        </fieldset> */}
+       
         <button className="btn btn-primary"
           disabled={isLoading}
           onClick={event => {
