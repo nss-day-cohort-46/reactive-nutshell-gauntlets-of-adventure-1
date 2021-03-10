@@ -1,5 +1,7 @@
 import React from "react"
 import { Route } from "react-router-dom"
+import { MessageList } from "./message/MessageList"
+import { MessageProvider } from "./message/MessageProvider"
 import { TaskProvider } from "./tasks/TaskProvider"
 import { TaskList } from "./tasks/TaskList"
 import { TaskForm } from "./tasks/TaskForm";
@@ -16,6 +18,12 @@ export const ApplicationViews = () => {
       <Route exact path="/">
         {/* Render the component for news articles */}
       </Route>
+
+      <Route path="/friends">
+        {/* Render the component for list of friends */}
+      </Route>
+
+    <MessageProvider>
       <FriendProvider>
         <UserProvider>
           <Route path="/friends">
@@ -27,7 +35,12 @@ export const ApplicationViews = () => {
         </UserProvider>
       </FriendProvider>
       <Route path="/messages">
-        {/* Render the component for the messages */}
+        <MessageList />git fetch -a
+      </Route>
+    </MessageProvider>
+
+      <Route path="/tasks">
+        {/* Render the component for the user's tasks */}
       </Route>
 
       <TaskProvider>
@@ -42,6 +55,7 @@ export const ApplicationViews = () => {
       <Route path="/events">
         {/* Render the component for the user's events */}
       </Route>
+
     </>
   )
 }
