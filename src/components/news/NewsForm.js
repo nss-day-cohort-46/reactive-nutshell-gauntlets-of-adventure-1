@@ -86,7 +86,7 @@ export const NewsForm = () => {
 
     return (
       <form className="newsArticleForm">
-        <h2 className="newsArticleForm__title">{newsArticleId ? "Edit newsArticle" : "Add newsArticle"}</h2>
+        <h2 className="newsArticleForm__title">{newsArticleId ? "Edit News Article" : "Add News Article"}</h2>
         <fieldset>
           <div className="form-group">
             <label htmlFor="newsArticleName">Article Title: </label>
