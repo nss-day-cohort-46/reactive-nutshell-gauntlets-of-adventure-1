@@ -106,6 +106,7 @@ export const NewsForm = () => {
           <div className="form-group">
               <label htmlFor="url">Article's Url:</label>
               <input type="text" id="url" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Articles url" value={newsArticle.url}/>
+              
           </div>
         </fieldset>
        

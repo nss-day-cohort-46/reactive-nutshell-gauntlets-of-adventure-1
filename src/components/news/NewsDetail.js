@@ -34,8 +34,8 @@ export const NewsDetail = () => {
         
         <h3 className="newsArticle__name">{newsArticles.title}</h3>
       <div className="newsArticle__synopsis">Synopsis: {newsArticles.synopsis}</div>
-      <div className="newsArticle__url">Url: {newsArticles.url}</div>
-      <div className="newsArticle__timeStamp">Time Posted: {newsArticles.timestamp}</div>
+      <div className="newsArticle__url">Website: {newsArticles.url}</div>
+      {/* <div className="newsArticle__timeStamp">Time Posted: {newsArticles.timestamp}</div> */}
       <button onClick={handleRelease}>Delete Article</button>
       <button onClick={() => {
      history.push(`/articles/edit/${newsArticles.id}`)

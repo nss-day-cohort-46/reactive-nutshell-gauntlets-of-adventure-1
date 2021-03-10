@@ -4,7 +4,7 @@ import React, { useState, createContext } from "react"
 export const UserContext = createContext()
 
 // This component establishes what data can be used.
-export const UserProvider = (props) => {
+export const UserStoredProvider = (props) => {
   const [users, setUsers] = useState([])
 
   const getUsers = () => {

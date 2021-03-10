@@ -16,6 +16,7 @@ import {NewsProvider} from "./news/NewsProvider"
 import {NewsForm} from "./news/NewsForm"
 import {NewsArticleList} from "./news/NewsArticleList"
 import {NewsDetail} from "./news/NewsDetail"
+import {UserStoredProvider} from "./user/userProvider"
 
 
 
@@ -33,7 +34,7 @@ export const ApplicationViews = () => {
       </Route>
 
     <NewsProvider>
-        <UserProvider>
+        <UserStoredProvider>
      
       <Route path="/articles/create">
         <NewsForm />
@@ -53,7 +54,7 @@ export const ApplicationViews = () => {
 
 
    
-  </UserProvider>
+  </UserStoredProvider>
     </NewsProvider>
   
 
