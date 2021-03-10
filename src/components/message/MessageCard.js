@@ -8,11 +8,9 @@ export const MessageCard = ({ message }) => {
     const { deleteMessage } = useContext(MessageContext)
     const history = useHistory();
 
-    function timeConverter(UNIX_timestamp){
+    const timeConverter = (UNIX_timestamp) => {
         var dateVar = new Date(UNIX_timestamp).toLocaleDateString("en-US")
-        // console.log(dateVar)
         var timeVar = new Date(UNIX_timestamp).toLocaleTimeString("en-US")
-        // console.log(timeVar)
         const time = `${dateVar} ${timeVar}`
         return time;
     }
