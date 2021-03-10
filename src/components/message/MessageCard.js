@@ -36,6 +36,8 @@ export const MessageCard = ({ message }) => {
                 <button id={message.id} onClick={handleDelete} className="btn btn-primary">X</button>
             : ""}
         </div>
+        <div class="divider"/>
+        <div> <button id={"ADDFRIEND--"+message.id} className="btn btn-primary">ADD</button></div>
     </div>
     )
 };
