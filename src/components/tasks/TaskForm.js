@@ -9,7 +9,7 @@ export const TaskForm = () => {
     const [isLoading, setIsLoading] = useState(true)
 
     const [task, setTask] = useState({
-        userId: 0,
+        userId: parseInt(sessionStorage.getItem("nutshell_user")),
         name: "",
         taskDetails: "",
         expectedCompletion: "",

@@ -23,13 +23,13 @@ export const TaskDetail = ({ task }) => {
       updateTask(task.id)
     }
 
-    useEffect(() => {
-        console.log('taskId: ', taskId);
-      getTaskById(taskId)
-      .then((response) => {
-        setTasks(response)
-      })
-      }, [])
+    // useEffect(() => {
+    //     console.log('taskId: ', taskId);
+    //   getTaskById(taskId)
+    //   .then((response) => {
+    //     setTasks(response)
+    //   })
+    //   }, [])
 
     return (
       <section className="task">
