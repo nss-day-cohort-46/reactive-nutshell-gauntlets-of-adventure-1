@@ -7,6 +7,7 @@ export const MessageCard = ({ message }) => (
     <div className="message__head">{message.user.name} - {message.timestamp}</div>
     <div className="message__text">
         { message.text }
+        { message.userId===parseInt(sessionStorage.getItem("nutshell_user")) ? "DELETE" : ""}
     </div>
 </div>
 );

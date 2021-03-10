@@ -6,27 +6,24 @@ import { useHistory } from "react-router-dom";
 export const MessageForm = () => {
     const { addMessage } = useContext(MessageContext);
 
+    //set blank state message obj
     const [message, setMessage] = useState({
-        userId: sessionStorage.getItem("nutshell_user"),
+        userId: parseInt(sessionStorage.getItem("nutshell_user")),
         text: "",
-        timestamp: Math.floor(Date.now() /1000)
+        timestamp: ""
     });
 
     const history = useHistory();
-
     useEffect(() => {
     }, []);
 
     const handleControlledInputChange = (event) => {
         
+        //make a copy
         const newMessage = { ...message };
         let selectedVal = event.target.value;
-
-        // if (event.target.id.includes("Id")) {
-        //     selectedVal = parseInt(selectedVal);
-        // }
-        
         newMessage[event.target.id] = selectedVal;
+        newMessage.timestamp=Date.now()
         setMessage(newMessage);
     };
 
@@ -39,7 +36,14 @@ const handleClickSaveMessage = (event) => {
         window.alert("Please enter a message");
     } else {
         console.log("Add Message" + message.timestamp);
-        addMessage(message).then(() => history.push("/messages"));
+        const newMessage = { ...message };
+        setMessage(newMessage);  //make copy of state obj and add to json db
+        addMessage(message)
+        .then(setMessage({  //reset state obj as blank to zero out add form
+            userId: parseInt(sessionStorage.getItem("nutshell_user")),
+            text: "",
+            timestamp: ""
+        }))
     }
 };
 
