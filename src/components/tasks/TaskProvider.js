@@ -9,13 +9,14 @@ export const TaskProvider = (props) => {
     // console.log('tasks: ', tasks);
 
     const getTasks = () => {
-        return fetch("http://localhost:8088/tasks?_expand=user")
+        return fetch("http://localhost:8088/tasks")
             .then(res => res.json())
             .then(setTasks)
     }
 
-    const getTaskById = (id) => {
-        return fetch(`http://localhost:8088/tasks/${id}?_expand=user`)
+    const getTaskById = (taskId) => {
+        // debugger
+        return fetch(`http://localhost:8088/tasks/${taskId}`)
             .then(res => res.json())
     }
 
@@ -30,8 +31,12 @@ export const TaskProvider = (props) => {
             .then(getTasks)
     }
 
-    const deleteTask = taskId => {
-        return fetch(`http://localhost:8088/tasks/${taskId}`, {
+    const deleteTask = (taskId) => {
+        // debugger
+        const fetchVar = `http://localhost:8088/tasks/${taskId}`
+        console.log('fetchVar: ', fetchVar);
+        
+        return fetch(fetchVar, {
             method: "DELETE"
         })
             .then(getTasks)

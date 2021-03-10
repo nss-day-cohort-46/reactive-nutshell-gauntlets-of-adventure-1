@@ -1,7 +1,7 @@
 import { useHistory } from "react-router-dom"
 import React, { useContext, useEffect } from "react"
 import { TaskContext } from "./TaskProvider"
-import { TaskCard } from "./TaskCard"
+import { TaskDetail } from "./TaskDetail"
 
 export const TaskList = () => {
     const history = useHistory()
@@ -20,7 +20,7 @@ export const TaskList = () => {
                 <button onClick={() => history.push("/tasks/create")}>Create New Task</button>
             </section>
             <div className="tasks">
-                {tasks?.map(task => <TaskCard key={task.id} task={task} />)}
+                {tasks?.map(task => <TaskDetail key={task.id} task={task} />)}
             </div>
         </>
     )
