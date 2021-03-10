@@ -11,6 +11,14 @@ import { FriendList } from "./friends/FriendList"
 import { FriendProvider } from "./friends/FriendProvider"
 import { UserList } from "./users/UserList"
 import { UserContext, UserProvider } from "./users/UserProvider"
+import { Home } from "./Home"
+import {NewsProvider} from "./news/NewsProvider"
+import {NewsForm} from "./news/NewsForm"
+import {NewsArticleList} from "./news/NewsArticleList"
+import {NewsDetail} from "./news/NewsDetail"
+
+
+
 
 export const ApplicationViews = () => {
   return (
@@ -19,8 +27,38 @@ export const ApplicationViews = () => {
         {/* Render the component for news articles */}
       </Route>
 
+
+<Route exact path="/">
+        <Home />
+      </Route>
+
+    <NewsProvider>
+        <UserProvider>
+     
+      <Route path="/articles/create">
+        <NewsForm />
+      </Route>
+
+<Route exact path="/articles">
+    <NewsArticleList />
+   </Route>
+
+      <Route exact path="/articles/detail/:newsArticleId(\d+)">
+    <NewsDetail />
+</Route>
+
+    <Route path="/articles/edit/:newsArticleId(\d+)">
+    <NewsForm />
+    </Route>
+
+
+   
+  </UserProvider>
+    </NewsProvider>
+  
+
       <Route path="/friends">
-        {/* Render the component for list of friends */}
+        
       </Route>
 
     <MessageProvider>
