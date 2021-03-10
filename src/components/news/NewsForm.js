@@ -84,39 +84,39 @@ export const NewsForm = () => {
       })
     }, [])
 
+    
+
     return (
-      <form className="newsArticleForm">
-        <h2 className="newsArticleForm__title">{newsArticleId ? "Edit News Article" : "Add News Article"}</h2>
-        <fieldset>
-          <div className="form-group">
-            <label htmlFor="newsArticleName">Article Title: </label>
-            <input type="text" id="title" required autoFocus className="form-control"
-            placeholder="Article title"
-            onChange={handleControlledInputChange}
-            value={newsArticle.title}/>
-          </div>
-        </fieldset>
-        <fieldset>
-          <div className="form-group">
-              <label htmlFor="synopsis">Article's Synopsis:</label>
-              <input type="text" id="synopsis" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Article synopsis" value={newsArticle.synopsis}/>
-          </div>
-        </fieldset>
-        <fieldset>
-          <div className="form-group">
-              <label htmlFor="url">Article's Url:</label>
-              <input type="text" id="url" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Articles url" value={newsArticle.url}/>
-              
-          </div>
-        </fieldset>
-       
-        <button className="btn btn-primary"
-          disabled={isLoading}
-          onClick={event => {
-            event.preventDefault() // Prevent browser from submitting the form and refreshing the page
-            handleSavenewsArticle()
-          }}>
-        {newsArticleId ? "Save Article" : "Add Article"}</button>
-      </form>
+      <form className="newsArticleForm onSubmit={event => {
+        event.preventDefault() // Prevent browser from submitting the form and refreshing the page
+        handleSavenewsArticle()
+      }}">
+    <h2 className="newsArticleForm__title">{newsArticleId ? "Edit News Article" : "Add News Article"}</h2>
+    <fieldset>
+      <div className="form-group">
+        <label htmlFor="newsArticleName">Article Title: </label>
+        <input type="text" id="title" required autoFocus className="form-control"
+        placeholder="Article title"
+        onChange={handleControlledInputChange}
+        value={newsArticle.title}/>
+      </div>
+    </fieldset>
+    <fieldset>
+      <div className="form-group">
+          <label htmlFor="synopsis">Article's Synopsis:</label>
+          <input type="text" id="synopsis" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Article synopsis" value={newsArticle.synopsis}/>
+      </div>
+    </fieldset>
+    <fieldset>
+      <div className="form-group">
+          <label htmlFor="url">Article's Url:</label>
+          <input type="text" id="url" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Articles url" value={newsArticle.url}/>
+      </div>
+    </fieldset>
+    <button className="btn btn-primary"
+      disabled={isLoading} type="submit"
+      >
+    {newsArticleId ? "Save Article" : "Add Article"}</button>
+  </form>
     )
 }
