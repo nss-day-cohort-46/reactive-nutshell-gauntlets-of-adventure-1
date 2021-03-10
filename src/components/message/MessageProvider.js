@@ -11,7 +11,7 @@ export const MessageProvider = (props) => {
         return fetch("http://localhost:8088/messages?_expand=user")
         .then(res => res.json())
         .then(sorted => {
-            sorted = sorted.sort((a,b)=>Date.parse(a.timestamp)-Date.parse(b.timestamp))
+            sorted = sorted.sort((b,a)=>a.timestamp-b.timestamp) //change a,b to sort most recent last
             setMessages(sorted)
         })
     }

@@ -11,7 +11,7 @@ const { messages, getMessages } = useContext(MessageContext)
 
   //useEffect - reach out to the world for something
 useEffect(() => {
-    console.log("MessageList: useEffect - getMessages")
+    // console.log("MessageList: useEffect - getMessages")
     getMessages()
 }, [])
 
@@ -29,7 +29,7 @@ return (
         <div className="messageList">
             {
             messages.map(message => {
-                console.log(message);
+                // console.log(message);
                 return <MessageCard key={message.id} message={message} />
             })
             }

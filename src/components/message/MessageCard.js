@@ -10,9 +10,9 @@ export const MessageCard = ({ message }) => {
 
     function timeConverter(UNIX_timestamp){
         var dateVar = new Date(UNIX_timestamp).toLocaleDateString("en-US")
-        console.log(dateVar)
+        // console.log(dateVar)
         var timeVar = new Date(UNIX_timestamp).toLocaleTimeString("en-US")
-        console.log(timeVar)
+        // console.log(timeVar)
         const time = `${dateVar} ${timeVar}`
         return time;
     }

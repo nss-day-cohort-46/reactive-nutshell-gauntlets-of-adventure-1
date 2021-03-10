@@ -31,11 +31,11 @@ const handleClickSaveMessage = (event) => {
     event.preventDefault(); //Prevents the browser from submitting the form
 
     const text = message.text;
-//    console.log(text);
+    console.log("text: " + text);
     if (text === "" ) {
         window.alert("Please enter a message");
     } else {
-        console.log("Add Message" + message.timestamp);
+        console.log("Add Message: " + message.text + " " + message.timestamp);
         const newMessage = { ...message };
         setMessage(newMessage);  //make copy of state obj and add to json db
         addMessage(message)
@@ -53,13 +53,13 @@ const handleClickSaveMessage = (event) => {
             <div className="form-group">
                 {/* <label htmlFor="text">New Message:</label> */}
                 <textarea
-                type="text"
-                id="text"
-                onChange={handleControlledInputChange}
-                className="form-control"
-                placeholder="New Message">
-                {message.text}
-                </textarea>
+                    type="text"
+                    id="text"
+                    onChange={handleControlledInputChange}
+                    className="form-control"
+                    placeholder="New Message"
+                    value={message.text}
+                />
             </div>
             </fieldset>
             <button className="btn btn-primary" onClick={handleClickSaveMessage}>
