@@ -18,21 +18,23 @@ useEffect(() => {
 const history = useHistory();
 
 return (
-    <div>
+    <div className="message">
         <div>
-        <h2>Messages</h2>
+            <h2>Messages</h2>
+        </div>
+        <div>
             <MessageForm/>
         </div>
 
-        <div className="messages">
-        {
-        messages.map(message => {
-            console.log(message);
-            return <MessageCard key={message.id} message={message} />
-        })
-        }
+        <div className="messageList">
+            {
+            messages.map(message => {
+                console.log(message);
+                return <MessageCard key={message.id} message={message} />
+            })
+            }
+        </div>
     </div>
-    </div>
-    )
+        )
 }
 
