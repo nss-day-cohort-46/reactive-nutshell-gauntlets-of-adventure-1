@@ -28,6 +28,7 @@ export const UserList = () => {
 
     // Use the .map() array method to iterate the array of animals and 
     // generate HTML for each one by invoking the FriendCard component function.
+
     return (
         <div className="friends">
             {/* {console.log("friends list render", friends)} */}

@@ -16,6 +16,12 @@ export const UserProvider = (props) => {
         .then(res => res.json())
         .then(setUsers)
     }
+
+    const getUserById = (userId) => {
+        return fetch(`http://localhost:8088/${userId}`)
+        .then(res => res.json())
+    }
+
     return (
         <UserContext.Provider value={{
             users, getUsers, searchTerms, setSearchTerms

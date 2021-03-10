@@ -1,5 +1,6 @@
 import React from "react"
 import { Route } from "react-router-dom"
+import { AddFriend } from "./friends/FriendAdd"
 import { FriendFinder } from "./friends/FriendFinder"
 import { FriendList } from "./friends/FriendList"
 import { FriendProvider } from "./friends/FriendProvider"

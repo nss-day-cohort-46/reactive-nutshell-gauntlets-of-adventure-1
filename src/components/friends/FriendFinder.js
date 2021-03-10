@@ -1,6 +1,7 @@
 import React, { useContext } from "react"
 import { UserContext } from "../users/UserProvider"
 
+
 export const FriendFinder = () => {
     const { setSearchTerms } = useContext(UserContext)
 
