@@ -35,7 +35,7 @@ export const ApplicationViews = () => {
         </UserProvider>
       </FriendProvider>
       <Route path="/messages">
-        <MessageList />
+        <MessageList />git fetch -a
       </Route>
     </MessageProvider>
 
