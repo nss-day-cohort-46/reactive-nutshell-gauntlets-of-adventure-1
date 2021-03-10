@@ -14,7 +14,7 @@ export const NewsForm = () => {
       synopsis: "",
       url: "",
       timestamp: "",
-      userId: 0
+      userId:  parseInt(sessionStorage.getItem("nutshell_user"))
     })
     
     //wait for data before button is active. Look at the button to see how it's setting itself to disabled or not based on this state
@@ -61,7 +61,7 @@ export const NewsForm = () => {
             title: newsArticle.title,
             synopsis: newsArticle.synopsis,
             url: newsArticle.url,
-            timestamp: newsArticle.timestamp,
+            timestamp: Date.now (),
             userId: parseInt(newsArticle.userId)
           })
           .then(() => history.push("/articles"))
@@ -108,7 +108,7 @@ export const NewsForm = () => {
               <input type="text" id="url" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Articles url" value={newsArticle.url}/>
           </div>
         </fieldset>
-        <fieldset>
+        {/* <fieldset>
           <div className="form-group">
             <label htmlFor="user">User: </label>
             <select value={newsArticle.userId} id="userId" className="form-control" onChange={handleControlledInputChange}>
@@ -120,7 +120,7 @@ export const NewsForm = () => {
               ))}
             </select>
           </div>
-        </fieldset>
+        </fieldset> */}
         <button className="btn btn-primary"
           disabled={isLoading}
           onClick={event => {

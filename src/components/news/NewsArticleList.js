@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom"
 
 export const NewsArticleList = () => {
   const { newsArticles, getNewsArticles, searchTerms } = useContext(NewsArticleContext)
-
+    
   // Since you are no longer ALWAYS displaying all of the newsArticles
   const [ filterednewsArticles, setFiltered ] = useState([])
   const history = useHistory()
@@ -39,6 +39,7 @@ export const NewsArticleList = () => {
       <div className="newsArticles">
       {
         filterednewsArticles.map(newsArticle => {
+          {console.log(newsArticle)}
           return <NewsArticleCard key={newsArticle.id} newsArticle={newsArticle} />
         })
       }

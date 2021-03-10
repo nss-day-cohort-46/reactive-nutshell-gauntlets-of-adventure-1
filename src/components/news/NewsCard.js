@@ -7,27 +7,14 @@ export const NewsArticleCard = ({ newsArticle }) => {
   
     let [timeSaved, setSavedTime] = useState(newsArticle.timestamp)
     let timeHold = newsArticle.timestamp
-    console.log(timeHold)
+    
     
     const handleTime = (UNIX_timestamp) => {
       let timeVar = new Date(UNIX_timestamp).toLocaleTimeString("en-US")
         let dateVar = new Date(UNIX_timestamp).toLocaleDateString("en-US")
         const time = ` ${timeVar} ${dateVar}`
          return time;}
-    
-// console.log(timeHold)
-// const date = new Date(timeHold * 1000);
-// const hours = date.getHours()-12;
-// const minutes = "0" + date.getMinutes();
-// const seconds = "0" + date.getSeconds();
-// const formatedTime = hours + `:` + minutes.substr(-2) + ':' + seconds.substr(-2);
-//       //  setSavedTime(formatedTime)
-//       return formatedTime
-        
-        
-
-
-
+ 
   return (
     <section className="newsArticle">
       <h3 className="newsArticle__name">
@@ -38,8 +25,10 @@ export const NewsArticleCard = ({ newsArticle }) => {
       <Link to={`${ newsArticle.url }`}>
           { newsArticle.url }
       </Link>
-      <div className="article_time">{handleTime(newsArticle.timestamp)}
+      <div className="article_synopsis">Synopsis: {newsArticle.synopsis}</div>
+      <div className="article_time">Time Posted: {handleTime(newsArticle.timestamp)}
 </div>
+
      
       
   </section>

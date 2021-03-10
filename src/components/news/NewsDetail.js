@@ -9,6 +9,7 @@ export const NewsDetail = () => {
 	const [newsArticles, setNewsArticle] = useState({})
     
 	const {newsArticleId} = useParams();
+  
 	const history = useHistory();
     const handleRelease = () => {
         releaseNewsArticle(newsArticles.id)
@@ -18,7 +19,8 @@ export const NewsDetail = () => {
       }
 
   useEffect(() => {
-    console.log("useEffect", newsArticleId)
+     console.log("useEffect", newsArticleId)
+   
     getNewsArticleById(newsArticleId)
     .then((response) => {
       setNewsArticle(response)
@@ -33,7 +35,7 @@ export const NewsDetail = () => {
         <h3 className="newsArticle__name">{newsArticles.title}</h3>
       <div className="newsArticle__synopsis">Synopsis: {newsArticles.synopsis}</div>
       <div className="newsArticle__url">Url: {newsArticles.url}</div>
-      <div className="newsArticle__timeStamp">User: {newsArticles.user?.name}</div>
+      <div className="newsArticle__timeStamp">Time Posted: {newsArticles.timestamp}</div>
       <button onClick={handleRelease}>Delete Article</button>
       <button onClick={() => {
      history.push(`/articles/edit/${newsArticles.id}`)
