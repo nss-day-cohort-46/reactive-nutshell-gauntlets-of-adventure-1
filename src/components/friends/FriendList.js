@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react"
 import { FriendCard } from "./Friend"
 import { FriendContext } from "./FriendProvider"
+import {Link} from "react-router-dom"
 
 export const FriendList = () => {
 
@@ -23,6 +24,10 @@ export const FriendList = () => {
     // Use the .map() array method to iterate the array of animals and 
     // generate HTML for each one by invoking the FriendCard component function.
     return (
+        <>
+        <Link to={`/friends/search`}>
+        <button>Add a Friend</button>
+        </Link>
         <div className="friends">
             {/* {console.log("friends list render", friends)} */}
             <h3>{currentUser}'s Friends</h3>
@@ -32,5 +37,6 @@ export const FriendList = () => {
                 })
             }
         </div>
+        </>
     )
 }

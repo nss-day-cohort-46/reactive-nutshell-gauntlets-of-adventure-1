@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react"
-
+import { useHistory } from "react-router-dom"
 import { FriendContext } from "../friends/FriendProvider"
 // import { UserContext } from "./UserProvider"
 
@@ -14,29 +14,27 @@ export const UserCard = ({ user, userFriends }) => {
 
     
     const filterFriends = userFriends.filter(userfriend => userfriend.userId === user.id)
-    console.log('filterFriends: ', filterFriends);
+    // console.log('filterFriends: ', filterFriends);
     let showButton = true
     if (filterFriends.length > 0) {
         user.name = ""
         showButton = false
     }
+    //if array of filtered friends is greater than 0 then leave whatever returned filtered search as blank.
     if (user.id === currentUser) {
         user.name = ""
         showButton = false
     } 
-    // else if (friendObj) {
-    //     user.name = ""
-    // }
-    // if (user.id === userFriends.userId) {
-    //     user.name = ""
-    // }
+    const history = useHistory()
 
     const handleSaveFriend = () => {
             addFriend({
             userId: user.id,
             currentUserId: currentUser
         })
-        
+        .then(() => {
+            history.push("/friends")
+        })
     
     }
 

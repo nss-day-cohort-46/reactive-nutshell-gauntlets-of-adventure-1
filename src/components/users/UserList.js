@@ -6,7 +6,7 @@ import { UserContext } from "./UserProvider"
 export const UserList = () => {
 
     const { users, getUsers, searchTerms } = useContext(UserContext)
-    console.log('users: ', users);
+    // console.log('users: ', users);
     const [ filteredUsers, setFiltered ] = useState([])
     
     //import the context object created in the provider component so that 
@@ -21,7 +21,8 @@ export const UserList = () => {
             const subset = users.filter(user => user.name.toLowerCase().includes(searchTerms.toLowerCase()))
             setFiltered(subset)
         } else {
-            setFiltered([])
+            setFiltered(users)
+            //If search field is empty display all users
         }
     }, [searchTerms, users])
 //   The useEffect hook allows the component to reach out into the world for anything 
