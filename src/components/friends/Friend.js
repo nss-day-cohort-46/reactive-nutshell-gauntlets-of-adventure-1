@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react"
-import { useParams } from "react-router"
 import { FriendContext } from "./FriendProvider"
 
 
@@ -14,8 +13,11 @@ export const FriendCard = ({ friend }) => {
 }
 
 return (
+   
+    
     <section className="friend">
         <h3 className="friend__name">{friend.user.name}</h3>
         <button onClick={HandleDeleteFriend}>Delete Friend</button>
     </section>
+    
 )}
