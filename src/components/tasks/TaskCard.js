@@ -9,8 +9,8 @@ export const TaskCard = ({ task }) => (
       { task.name }
       </Link>
   </h3>
-  <div className="task__breed">Task Name: {task.name}</div>
-  <div className="task__owner">Task Details: {task.taskDetails}</div>
-  <address className="location__address">Expected Completion: {task.expectedCompletion}</address>
+  <div className="task__name">Task Name: {task.name}</div>
+  <div className="task__taskDetails">Task Details: {task.taskDetails}</div>
+  <address className="task__expectedCompletion">Expected Completion: {task.expectedCompletion}</address>
 </section>
 )

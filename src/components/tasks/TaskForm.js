@@ -27,17 +27,18 @@ export const TaskForm = () => {
         // debugger
         if (taskId) {
             updateTask({
-                id: task.id,
+                id: taskId,
                 name: task.name,
-                date: task.date,
+                taskDetails: task.taskDetails,
+                expectedCompletion: task.expectedCompletion,
                 completed: task.completed,
                 userId: task.userId
             })
-                .then(history.push("/tasks"))
-            // .then(history.push(/tasks/details/${task.id}`))
+            .then(history.push("/tasks"))
+            // .then(history.push(`/tasks/details/${task.id}`))
         } else {
             addTask(task)
-                .then(history.push("/tasks"))
+            .then(history.push("/tasks"))
         }
     }
 
