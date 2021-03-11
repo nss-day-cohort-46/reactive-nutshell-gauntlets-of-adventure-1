@@ -5,7 +5,7 @@ import { FriendContext } from "./FriendProvider"
 export const FriendList = () => {
 
     const { userFriends, getFriends } = useContext(FriendContext)
-    console.log('userFriends: ', userFriends);
+    // console.log('userFriends: ', userFriends);
     
     const currentUser = sessionStorage.getItem("nutshell_userName")
     // console.log('currentUser: ', currentUser);

@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react"
-import { useParams } from "react-router"
 import { FriendContext } from "./FriendProvider"
 
 

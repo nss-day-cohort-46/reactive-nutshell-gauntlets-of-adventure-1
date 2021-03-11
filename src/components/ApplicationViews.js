@@ -5,7 +5,7 @@ import { MessageProvider } from "./message/MessageProvider"
 import { TaskProvider } from "./tasks/TaskProvider"
 import { TaskList } from "./tasks/TaskList"
 import { TaskForm } from "./tasks/TaskForm";
-import { AddFriend } from "./friends/FriendAdd"
+
 import { FriendFinder } from "./friends/FriendFinder"
 import { FriendList } from "./friends/FriendList"
 import { FriendProvider } from "./friends/FriendProvider"

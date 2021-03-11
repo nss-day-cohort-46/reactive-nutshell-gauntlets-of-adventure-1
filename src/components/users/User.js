@@ -1,36 +1,37 @@
 import React, { useContext, useEffect, useState } from "react"
 
 import { FriendContext } from "../friends/FriendProvider"
-import { UserContext } from "./UserProvider"
+// import { UserContext } from "./UserProvider"
 
 
 
-export const UserCard = ({ user }) => {
+export const UserCard = ({ user, userFriends }) => {
+    // console.log('userFriends: ', userFriends);
+    // console.log('user: ', user);
     const {addFriend} = useContext(FriendContext)
     const currentUser = parseInt(sessionStorage.getItem("nutshell_user"))
-    const [isLoading, setIsLoading] = useState(true)
-    const {getUsers} = useContext(UserContext)
-    // const { userFriends, getFriends } = useContext(FriendContext)
-    // console.log('friend: ', userFriends);
+
+
     
-    
-    // useEffect(() => {
-    //     // console.log("FriendList")
-    //     if (user.id !== currentUser) {
-    //         user.name = ""
-    //         setIsLoading(false)
-    //     } 
-    //     getUsers().then(() => {
-    //     })
-    // }, [])
-    
-    
+    const filterFriends = userFriends.filter(userfriend => userfriend.userId === user.id)
+    console.log('filterFriends: ', filterFriends);
+    let showButton = true
+    if (filterFriends.length > 0) {
+        user.name = ""
+        showButton = false
+    }
     if (user.id === currentUser) {
         user.name = ""
-    }
+        showButton = false
+    } 
+    // else if (friendObj) {
+    //     user.name = ""
+    // }
+    // if (user.id === userFriends.userId) {
+    //     user.name = ""
+    // }
 
     const handleSaveFriend = () => {
-
             addFriend({
             userId: user.id,
             currentUserId: currentUser
@@ -44,10 +45,12 @@ export const UserCard = ({ user }) => {
     
     return (
     <section className="user">
-        <h3 className="user__name">{user.name}</h3>
+        
+            <h3 className="user__name">{user.name}</h3>
+            
         <div className="add__friend">
             
-        { user.id === currentUser ? "" :
+        { showButton === false ? "" :
                 <button id={user.id} onClick={handleSaveFriend} >Add Friend</button>
             }
             
