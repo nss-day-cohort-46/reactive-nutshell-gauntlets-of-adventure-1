@@ -30,7 +30,7 @@ export const UserCard = ({ user }) => {
     }
 
     const handleSaveFriend = () => {
-      
+
             addFriend({
             userId: user.id,
             currentUserId: currentUser
@@ -38,6 +38,7 @@ export const UserCard = ({ user }) => {
         
     
     }
+
     // this event handler tells the button below that if clicked to add the friend to the 
     // array of friends as an object with the defined key variables above.
     

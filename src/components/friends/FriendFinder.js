@@ -1,5 +1,6 @@
 import React, { useContext } from "react"
 import { UserContext } from "../users/UserProvider"
+import {Link} from "react-router-dom"
 
 
 export const FriendFinder = () => {
@@ -7,7 +8,9 @@ export const FriendFinder = () => {
 
     return (
         <>
-        Find a Friend:
+        <Link to={`/friends/search/`}>
+        <button>Find a Friend</button>
+        </Link>
         <input type="text"
             className="input--wide"
             onKeyUp={(event) => setSearchTerms(event.target.value)}
