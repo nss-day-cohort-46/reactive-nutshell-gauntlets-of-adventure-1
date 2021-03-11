@@ -1,15 +1,18 @@
 import React from "react"
 import { Route } from "react-router-dom"
+
 import { MessageList } from "./message/MessageList"
 import { MessageProvider } from "./message/MessageProvider"
+
 import { TaskProvider } from "./tasks/TaskProvider"
 import { TaskList } from "./tasks/TaskList"
-import { TaskForm } from "./tasks/TaskForm"
+import { TaskForm } from "./tasks/TaskForm";
 import { TaskDetail } from "./tasks/TaskDetail"
 import { AddFriend } from "./friends/FriendAdd"
 import { FriendFinder } from "./friends/FriendFinder"
 import { FriendList } from "./friends/FriendList"
 import { FriendProvider } from "./friends/FriendProvider"
+
 import { UserList } from "./users/UserList"
 import { UserContext, UserProvider } from "./users/UserProvider"
 import { Home } from "./Home"
@@ -72,10 +75,12 @@ export const ApplicationViews = () => {
             <UserList />
           </Route>
         </UserProvider>
-      </FriendProvider>
+
       <Route path="/messages">
-        <MessageList />git fetch -a
+        <MessageList />
       </Route>
+
+      </FriendProvider>
     </MessageProvider>
 
       <Route path="/tasks">

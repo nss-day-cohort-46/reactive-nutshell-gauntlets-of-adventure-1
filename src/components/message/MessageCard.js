@@ -1,12 +1,16 @@
 import React, { useContext, useEffect, useState } from "react"
 import { MessageContext } from "./MessageProvider"
+import { FriendContext } from "./../friends/FriendProvider"
 import { useParams, useHistory } from "react-router-dom"
 import "./Message.css";
 
-export const MessageCard = ({ message }) => {
+export const MessageCard = ({ message, userFriends}) => {
 
     const { deleteMessage } = useContext(MessageContext)
+    const { addFriend } = useContext(FriendContext)
+    // const { filteredFriends, currentUserFriends } = useContext(FriendContext)
     const history = useHistory();
+    const currentUserId = parseInt(sessionStorage.getItem('nutshell_user'))
 
     const timeConverter = (UNIX_timestamp) => {
         var dateVar = new Date(UNIX_timestamp).toLocaleDateString("en-US")
@@ -23,6 +27,20 @@ export const MessageCard = ({ message }) => {
         })
     }
 
+    const handleAdd = (event) => {
+        addFriend({
+            "userId": message.userId,
+            "currentUserId": currentUserId
+        })
+        // .then(get())
+    }
+
+        let isFriendBoolean = false
+    let isFriend = userFriends.filter(userFriend => message.userId === userFriend.userId)
+    if (isFriend.length>0) {
+        isFriendBoolean = true
+    }
+
     return(
     <div className="messageCard">
     <div className="message__colLeft">
@@ -34,10 +52,20 @@ export const MessageCard = ({ message }) => {
         <div className="message__colRight">
             { message.userId===parseInt(sessionStorage.getItem("nutshell_user")) ? 
                 <button id={message.id} onClick={handleDelete} className="btn btn-primary">X</button>
-            : ""}
+            : 
+                <button className="btn btnHidden btn-primary">X</button> //hidden button for layout
+        }
         </div>
         <div className="divider"/>
-        <div> <button id={"ADDFRIEND--"+message.id} className="btn btn-primary">ADD</button></div>
-    </div>
+        <div>
+            {
+            isFriendBoolean || currentUserId===message.userId ?
+                ""
+            :
+            <button id={"ADDFRIEND--"+message.id} onClick={handleAdd} className="btn btn-primary">Add</button>
+            }
+        </div>
+            
+</div>
     )
-};
+}
