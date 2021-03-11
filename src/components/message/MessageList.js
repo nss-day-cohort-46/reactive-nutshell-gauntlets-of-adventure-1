@@ -3,15 +3,22 @@ import { useHistory } from "react-router-dom";
 import { MessageContext } from "./MessageProvider"
 import { MessageForm } from "./MessageForm"
 import { MessageCard } from "./MessageCard"
+
+import { FriendContext } from "./../friends/FriendProvider"
+
 import "./Message.css"
 
 export const MessageList = () => {
     
     const { messages, getMessages } = useContext(MessageContext)
+    const { userFriends, getFriends } = useContext(FriendContext)
 
     useEffect(() => {
-        getMessages()
+        getFriends()
+        .then(getMessages())
     }, [])
+
+    console.log(userFriends);
 
     const history = useHistory();
 
@@ -27,8 +34,7 @@ export const MessageList = () => {
             <div className="messageList">
                 {
                 messages.map(message => {
-                    // console.log(message);
-                    return <MessageCard key={message.id} message={message} />
+                    return <MessageCard key={message.id} message={message} userFriends={userFriends} />
                 })
                 }
             </div>
