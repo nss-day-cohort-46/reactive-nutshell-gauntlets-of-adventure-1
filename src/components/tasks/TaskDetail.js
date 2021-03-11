@@ -4,7 +4,7 @@ import { TaskContext } from "./TaskProvider";
 import "./Tasks.css"
 
 export const TaskDetail = ({ task }) => {
-    const {completeTask, deleteTask, updateTask, getTaskById} = useContext(TaskContext)
+    const {completeTask, deleteTask } = useContext(TaskContext)
     const history = useHistory()
     const {taskId} = useParams();
     const [tasks, setTasks] = useState({})
@@ -19,17 +19,6 @@ export const TaskDetail = ({ task }) => {
         history.push(`/tasks`)
       })
     }
-    const handleUpdate = () => {
-      updateTask(task.id)
-    }
-
-    // useEffect(() => {
-    //     console.log('taskId: ', taskId);
-    //   getTaskById(taskId)
-    //   .then((response) => {
-    //     setTasks(response)
-    //   })
-    //   }, [])
 
     return (
       <section className="task">
@@ -38,7 +27,7 @@ export const TaskDetail = ({ task }) => {
         <div className="task__details">Details: { task.taskDetails }</div>
         <div className="completed">Completed: {String(task.completed)}</div>
         <button key={task.id} onClick={handleComplete}>Completed Task</button> 
-        <button onClick={handleDelete}>Delete Task</button>
-        <button onClick={() => {history.push(`tasks/edit/${task.id}`)}}>Edit Task</button>
+        <button onClick={(event) => handleDelete(task.id)}>Delete Task</button>
+        <button onClick={(event) => {history.push(`tasks/edit/${task.id}`)}}>Edit Task</button>
     </section>
   )}

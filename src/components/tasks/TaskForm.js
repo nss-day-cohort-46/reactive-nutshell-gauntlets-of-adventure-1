@@ -22,10 +22,21 @@ export const TaskForm = () => {
         setTask(newTask)
     }
     const saveTask = () => {
-        addTask(task)
+        debugger
+        if(taskId){
+            updateTask({
+                id : taskId,
+                name: task.name,
+                date: task.date,
+                completed: task.completed,
+                userId: task.userId
+            })
             .then(history.push("/tasks"))
+        }else{
+            addTask(task)
+            .then(history.push("/tasks"))
+        }
     }
-
     return (
         <form className="taskForm">
             <h2 className="taskForm__title">Create New Task</h2>
