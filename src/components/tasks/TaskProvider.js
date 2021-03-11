@@ -6,10 +6,10 @@ export const TaskContext = createContext()
 // This component establishes task data that can be used within the application.
 export const TaskProvider = (props) => {
     const [tasks, setTasks] = useState([])
-    console.log('tasks: ', tasks);
+    // console.log('tasks: ', tasks);
 
     const getTasks = () => {
-        return fetch("http://localhost:8088/tasks")
+        return fetch(`http://localhost:8088/tasks?userId=${(parseInt(sessionStorage.getItem("nutshell_user")))}`)
             .then(res => res.json())
             .then(setTasks)
     }
@@ -19,6 +19,8 @@ export const TaskProvider = (props) => {
         return fetch(`http://localhost:8088/tasks/${taskId}`)
             .then(res => res.json())
     }
+// ?userId=${sessionStorage.getItem("nutshell_user")}
+
 
     const addTask = (task) => {
         return fetch("http://localhost:8088/tasks/", {
@@ -33,10 +35,7 @@ export const TaskProvider = (props) => {
 
     const deleteTask = (taskId) => {
         // debugger
-        const fetchVar = `http://localhost:8088/tasks/${taskId}`
-        console.log('fetchVar: ', fetchVar);
-
-        return fetch(fetchVar, {
+        return fetch(`http://localhost:8088/tasks/${taskId}`, {
             method: "DELETE"
         })
             .then(() => getTasks(parseInt(sessionStorage.getItem("nutshell_user"))))
