@@ -87,10 +87,10 @@ export const NewsForm = () => {
     
 
     return (
-      <form className="newsArticleForm onSubmit={event => {
+      <form className="newsArticleForm" onSubmit={event => {
         event.preventDefault() // Prevent browser from submitting the form and refreshing the page
         handleSavenewsArticle()
-      }}">
+      }}>
     <h2 className="newsArticleForm__title">{newsArticleId ? "Edit News Article" : "Add News Article"}</h2>
     <fieldset>
       <div className="form-group">
