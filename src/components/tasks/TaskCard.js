@@ -5,7 +5,7 @@ import "./Tasks.css"
 export const TaskCard = ({ task }) => (
   <section className="task">
   <h3 className="task__name">
-      <Link to={`/tasks/detail/${task.id}`}>
+      <Link to={`/tasks/details/${task.id}`}>
       { task.name }
       </Link>
   </h3>

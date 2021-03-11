@@ -6,6 +6,8 @@ export const TaskForm = () => {
     const { addTask, getTaskById, deleteTask, updateTask } = useContext(TaskContext)
     const history = useHistory()
     const { taskId } = useParams()
+    console.log('taskId: ', taskId);
+
     const [isLoading, setIsLoading] = useState(true)
 
     const [task, setTask] = useState({
@@ -22,7 +24,7 @@ export const TaskForm = () => {
         setTask(newTask)
     }
     const saveTask = () => {
-        debugger
+        // debugger
         if(taskId){
             updateTask({
                 id : taskId,
