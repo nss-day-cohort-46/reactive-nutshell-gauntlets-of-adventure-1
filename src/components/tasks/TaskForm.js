@@ -3,9 +3,11 @@ import { useHistory, useParams } from "react-router-dom"
 import { TaskContext } from "./TaskProvider"
 
 export const TaskForm = () => {
-    const { addTask, getTaskById, deleteTask, updateTask } = useContext(TaskContext)
+    const { addTask, getTasks, getTaskById, deleteTask, updateTask } = useContext(TaskContext)
     const history = useHistory()
     const { taskId } = useParams()
+    console.log('taskId: ', taskId);
+
     const [isLoading, setIsLoading] = useState(true)
 
     const [task, setTask] = useState({
@@ -22,9 +24,28 @@ export const TaskForm = () => {
         setTask(newTask)
     }
     const saveTask = () => {
-        addTask(task)
+        // debugger
+        if (taskId) {
+            updateTask({
+                id: taskId,
+                name: task.name,
+                taskDetails: task.taskDetails,
+                expectedCompletion: task.expectedCompletion,
+                completed: task.completed,
+                userId: task.userId
+            })
             .then(history.push("/tasks"))
+            // .then(history.push(`/tasks/details/${task.id}`))
+        } else {
+            addTask(task)
+            .then(history.push("/tasks"))
+        }
     }
+
+    useEffect(() => {
+        getTasks()
+    }, [])
+
 
     return (
         <form className="taskForm">

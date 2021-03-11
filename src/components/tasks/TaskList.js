@@ -1,5 +1,5 @@
-import { useHistory } from "react-router-dom"
 import React, { useContext, useEffect } from "react"
+import { useHistory } from "react-router-dom"
 import { TaskContext } from "./TaskProvider"
 import { TaskDetail } from "./TaskDetail"
 
