@@ -4,10 +4,11 @@ import { FriendContext } from "./FriendProvider"
 
 export const FriendList = () => {
 
-    const { userFriends, getFriends, } = useContext(FriendContext)
+    const { userFriends, getFriends } = useContext(FriendContext)
+    console.log('userFriends: ', userFriends);
     
     const currentUser = sessionStorage.getItem("nutshell_userName")
-    console.log('currentUser: ', currentUser);
+    // console.log('currentUser: ', currentUser);
     //import the context object created in the provider component so that 
     // the Context hook can access the objects it exposes.
     // This state changes when `getFriends()` is invoked below

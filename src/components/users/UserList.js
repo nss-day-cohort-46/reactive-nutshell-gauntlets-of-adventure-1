@@ -30,7 +30,7 @@ export const UserList = () => {
     // generate HTML for each one by invoking the FriendCard component function.
 
     return (
-        <div className="friends">
+        <div className="users">
             {/* {console.log("friends list render", friends)} */}
             
             {   

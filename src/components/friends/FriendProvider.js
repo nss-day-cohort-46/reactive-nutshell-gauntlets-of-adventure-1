@@ -29,7 +29,9 @@ export const FriendProvider = (props) => {
         setUserFriends(currentUserFriends())
         
     }, [friends])
+
 // This useEffect takes the setUserFriends and sets the currentUserFriends value to it.
+//the dependency array holds the initial value of friends
 //---------------------------------------------------------------------
 
     const addFriend = friendObj => {
