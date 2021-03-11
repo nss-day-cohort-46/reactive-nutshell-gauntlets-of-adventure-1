@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useState } from "react"
 import { MessageContext } from "./MessageProvider"
+import { FriendContext } from "./../friends/FriendProvider"
 import { useParams, useHistory } from "react-router-dom"
 import "./Message.css";
 
 export const MessageCard = ({ message, userFriends}) => {
 
     const { deleteMessage } = useContext(MessageContext)
+    const { addFriend } = useContext(FriendContext)
     // const { filteredFriends, currentUserFriends } = useContext(FriendContext)
     const history = useHistory();
     const currentUserId = parseInt(sessionStorage.getItem('nutshell_user'))
@@ -25,7 +27,15 @@ export const MessageCard = ({ message, userFriends}) => {
         })
     }
 
-    let isFriendBoolean = false
+    const handleAdd = (event) => {
+        addFriend({
+            "userId": message.userId,
+            "currentUserId": currentUserId
+        })
+        // .then(get())
+    }
+
+        let isFriendBoolean = false
     let isFriend = userFriends.filter(userFriend => message.userId === userFriend.userId)
     if (isFriend.length>0) {
         isFriendBoolean = true
@@ -49,10 +59,10 @@ export const MessageCard = ({ message, userFriends}) => {
         <div className="divider"/>
         <div>
             {
-            isFriendBoolean ?
+            isFriendBoolean || currentUserId===message.userId ?
                 ""
             :
-            <button id={"ADDFRIEND--"+message.id} className="btn btn-primary">Add</button>
+            <button id={"ADDFRIEND--"+message.id} onClick={handleAdd} className="btn btn-primary">Add</button>
             }
         </div>
             
