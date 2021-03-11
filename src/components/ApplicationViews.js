@@ -4,8 +4,9 @@ import { MessageList } from "./message/MessageList"
 import { MessageProvider } from "./message/MessageProvider"
 import { TaskProvider } from "./tasks/TaskProvider"
 import { TaskList } from "./tasks/TaskList"
-import { TaskForm } from "./tasks/TaskForm";
-
+import { TaskForm } from "./tasks/TaskForm"
+import { TaskDetail } from "./tasks/TaskDetail"
+import { AddFriend } from "./friends/FriendAdd"
 import { FriendFinder } from "./friends/FriendFinder"
 import { FriendList } from "./friends/FriendList"
 import { FriendProvider } from "./friends/FriendProvider"
@@ -17,9 +18,6 @@ import {NewsForm} from "./news/NewsForm"
 import {NewsArticleList} from "./news/NewsArticleList"
 import {NewsDetail} from "./news/NewsDetail"
 import {UserStoredProvider} from "./user/userProvider"
-
-
-
 
 export const ApplicationViews = () => {
   return (
@@ -89,6 +87,12 @@ export const ApplicationViews = () => {
           <TaskList />
         </Route>
         <Route exact path="/tasks/create">
+          <TaskForm />
+        </Route>
+        <Route path="/tasks/details/:taskId(\d+)">
+          <TaskDetail />
+        </Route>
+        <Route path="/tasks/edit/:taskId(\d+)">
           <TaskForm />
         </Route>
       </TaskProvider>
