@@ -44,7 +44,7 @@ export const MessageCard = ({ message, userFriends}) => {
     return(
     <div className="messageCard">
     <div className="message__colLeft">
-        <div className="message__head">{message.user.id} {message.user.name} - {timeConverter(message.timestamp)}</div>
+        <div className="message__head">{message.user.name} - {timeConverter(message.timestamp)}</div>
         <div className="message__text">
             { message.text }
         </div>
