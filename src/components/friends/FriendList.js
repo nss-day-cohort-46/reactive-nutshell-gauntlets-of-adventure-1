@@ -1,13 +1,15 @@
 import React, { useContext, useEffect } from "react"
 import { FriendCard } from "./Friend"
 import { FriendContext } from "./FriendProvider"
+import {Link} from "react-router-dom"
 
 export const FriendList = () => {
 
-    const { userFriends, getFriends, } = useContext(FriendContext)
+    const { userFriends, getFriends } = useContext(FriendContext)
+    // console.log('userFriends: ', userFriends);
     
     const currentUser = sessionStorage.getItem("nutshell_userName")
-    console.log('currentUser: ', currentUser);
+    // console.log('currentUser: ', currentUser);
     //import the context object created in the provider component so that 
     // the Context hook can access the objects it exposes.
     // This state changes when `getFriends()` is invoked below
@@ -22,6 +24,10 @@ export const FriendList = () => {
     // Use the .map() array method to iterate the array of animals and 
     // generate HTML for each one by invoking the FriendCard component function.
     return (
+        <>
+        <Link to={`/friends/search`}>
+        <button>Add a Friend</button>
+        </Link>
         <div className="friends">
             {/* {console.log("friends list render", friends)} */}
             <h3>{currentUser}'s Friends</h3>
@@ -31,5 +37,6 @@ export const FriendList = () => {
                 })
             }
         </div>
+        </>
     )
 }
