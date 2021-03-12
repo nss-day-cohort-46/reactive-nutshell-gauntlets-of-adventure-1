@@ -17,6 +17,10 @@ import {NewsForm} from "./news/NewsForm"
 import {NewsArticleList} from "./news/NewsArticleList"
 import {NewsDetail} from "./news/NewsDetail"
 import {UserStoredProvider} from "./user/userProvider"
+import { EventList } from "./events/EventList"
+import { EventForm } from "./events/EventForm";
+import { EventDetail } from "./events/EventDetail"
+import {EventProvider} from "./events/EventProvider"
 
 export const ApplicationViews = () => {
   return (
@@ -101,6 +105,24 @@ export const ApplicationViews = () => {
       <Route path="/events">
         {/* Render the component for the user's events */}
       </Route>
+
+
+      <EventProvider>
+        <UserProvider>
+        <Route exact path="/events">
+          <EventList />
+        </Route>
+        <Route exact path="/events/create">
+          <EventForm />
+        </Route>
+        <Route path="/events/details/:eventId(\d+)">
+          <EventDetail />
+        </Route>
+        <Route path="/events/edit/:eventId(\d+)">
+          <EventForm />
+        </Route>
+        </UserProvider>
+      </EventProvider>
 
     </>
   )
