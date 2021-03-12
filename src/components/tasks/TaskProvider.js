@@ -9,7 +9,7 @@ export const TaskProvider = (props) => {
     // console.log('tasks: ', tasks);
 
     const getTasks = () => {
-        return fetch(`http://localhost:8088/tasks?userId=${(parseInt(sessionStorage.getItem("nutshell_user")))}`)
+        return fetch(`http://localhost:8088/tasks?userId=${(parseInt(sessionStorage.getItem("nutshell_user")))}&completed=false`)
             .then(res => res.json())
             .then(setTasks)
     }

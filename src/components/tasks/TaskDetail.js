@@ -10,13 +10,6 @@ export const TaskDetail = ({task}) => {
 
   const handleComplete = () => {
     completeTask(task.id)
-    // .then(() => {
-    //   if ( task.completed === true ) {
-        
-    //   } else {
-        
-    //   }
-    // }
   }
   
   const handleDelete = () => {
