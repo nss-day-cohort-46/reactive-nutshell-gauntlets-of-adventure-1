@@ -1,22 +1,28 @@
-import React from "react"
-import { Route } from "react-router-dom"
-import { MessageList } from "./message/MessageList"
-import { MessageProvider } from "./message/MessageProvider"
-import { TaskProvider } from "./tasks/TaskProvider"
-import { TaskList } from "./tasks/TaskList"
+import React from "react";
+import { Route } from "react-router-dom";
+
+import { MessageList } from "./message/MessageList";
+import { MessageProvider } from "./message/MessageProvider";
+
+import { TaskProvider } from "./tasks/TaskProvider";
+import { TaskList } from "./tasks/TaskList";
 import { TaskForm } from "./tasks/TaskForm";
-import { TaskDetail } from "./tasks/TaskDetail"
-import { FriendFinder } from "./friends/FriendFinder"
-import { FriendList } from "./friends/FriendList"
-import { FriendProvider } from "./friends/FriendProvider"
-import { UserList } from "./users/UserList"
-import { UserContext, UserProvider } from "./users/UserProvider"
-import { Home } from "./Home"
-import {NewsProvider} from "./news/NewsProvider"
-import {NewsForm} from "./news/NewsForm"
-import {NewsArticleList} from "./news/NewsArticleList"
-import {NewsDetail} from "./news/NewsDetail"
-import {UserStoredProvider} from "./user/userProvider"
+import { TaskDetail } from "./tasks/TaskDetail";
+
+import { FriendFinder } from "./friends/FriendFinder";
+import { FriendList } from "./friends/FriendList";
+import { FriendProvider } from "./friends/FriendProvider";
+
+import { UserList } from "./users/UserList";
+import { UserContext, UserProvider } from "./users/UserProvider";
+
+import { Home } from "./Home";
+
+import { NewsProvider } from "./news/NewsProvider";
+import { NewsForm } from "./news/NewsForm";
+import { NewsArticleList } from "./news/NewsArticleList";
+import { NewsDetail } from "./news/NewsDetail";
+import { UserStoredProvider } from "./user/userProvider";
 
 export const ApplicationViews = () => {
   return (
@@ -25,59 +31,50 @@ export const ApplicationViews = () => {
         {/* Render the component for news articles */}
       </Route>
 
-
-<Route exact path="/">
+      <Route exact path="/">
         <Home />
       </Route>
 
-    <NewsProvider>
+      <NewsProvider>
         <UserStoredProvider>
-     
-      <Route path="/articles/create">
-        <NewsForm />
-      </Route>
-
-<Route exact path="/articles">
-    <NewsArticleList />
-   </Route>
-
-      <Route exact path="/articles/detail/:newsArticleId(\d+)">
-    <NewsDetail />
-</Route>
-
-    <Route path="/articles/edit/:newsArticleId(\d+)">
-    <NewsForm />
-    </Route>
-
-
-   
-  </UserStoredProvider>
-    </NewsProvider>
-  
-
-      <Route path="/friends">
-        
-      </Route>
-
-    <MessageProvider>
-      <FriendProvider>
-        <UserProvider>
-          <Route exact path="/friends">
-            {/* Render the component for list of friends */}
-            <FriendList />
+          <Route path="/articles/create">
+            <NewsForm />
           </Route>
-          <Route exact path="/friends/search">
-            <FriendFinder />
-            <UserList />
+
+          <Route exact path="/articles">
+            <NewsArticleList />
           </Route>
-        </UserProvider>
 
-      <Route path="/messages">
-        <MessageList />
-      </Route>
+          <Route exact path="/articles/detail/:newsArticleId(\d+)">
+            <NewsDetail />
+          </Route>
 
-      </FriendProvider>
-    </MessageProvider>
+          <Route path="/articles/edit/:newsArticleId(\d+)">
+            <NewsForm />
+          </Route>
+        </UserStoredProvider>
+      </NewsProvider>
+
+      <Route path="/friends"></Route>
+
+      <MessageProvider>
+        <FriendProvider>
+          <UserProvider>
+            <Route exact path="/friends">
+              {/* Render the component for list of friends */}
+              <FriendList />
+            </Route>
+            <Route exact path="/friends/search">
+              <FriendFinder />
+              <UserList />
+            </Route>
+          </UserProvider>
+
+          <Route path="/messages">
+            <MessageList />
+          </Route>
+        </FriendProvider>
+      </MessageProvider>
 
       <Route path="/tasks">
         {/* Render the component for the user's tasks */}
@@ -101,7 +98,6 @@ export const ApplicationViews = () => {
       <Route path="/events">
         {/* Render the component for the user's events */}
       </Route>
-
     </>
-  )
-}
+  );
+};
