@@ -18,7 +18,7 @@ export const TaskDetail = ({task}) => {
         history.push(`/tasks`)
       })
   }
-    
+  
   return (
     <section className="task">
       <h4 className="task__name">Task Name: {task.name}</h4>
