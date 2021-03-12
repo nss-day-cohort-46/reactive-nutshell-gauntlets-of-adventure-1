@@ -43,9 +43,18 @@ export const TaskForm = () => {
     }
 
     useEffect(() => {
-        getTasks()
-    }, [])
-
+        getTasks().then(() => {
+          if (taskId) {
+            getTaskById(taskId)
+            .then(task => {
+                setTask(task)
+                setIsLoading(false)
+            })
+          } else {
+            setIsLoading(false)
+          }
+        })
+      }, [])
 
     return (
         <form className="taskForm">
