@@ -108,6 +108,7 @@ export const ApplicationViews = () => {
 
 
       <EventProvider>
+        <UserProvider>
         <Route exact path="/events">
           <EventList />
         </Route>
@@ -120,6 +121,7 @@ export const ApplicationViews = () => {
         <Route path="/events/edit/:eventId(\d+)">
           <EventForm />
         </Route>
+        </UserProvider>
       </EventProvider>
 
     </>

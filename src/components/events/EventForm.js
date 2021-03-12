@@ -1,9 +1,11 @@
 import React, { useContext, useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router-dom"
+import { UserContext } from "../users/UserProvider"
 import { EventContext } from "./EventProvider"
 
 export const EventForm = () => {
     const { addEvent, getEvents, getEventById, deleteEvent, updateEvent } = useContext(EventContext)
+    const {getUsers} = useContext(UserContext)
     const history = useHistory()
     const { eventId } = useParams()
     console.log('eventId: ', eventId);
@@ -36,13 +38,20 @@ export const EventForm = () => {
             .then(history.push("/events"))
             // .then(history.push(`/Events/details/${Event.id}`))
         } else {
-            addEvent(event)
-            .then(history.push("/events"))
-        }
+            addEvent({
+                name: event.name,
+                date: event.date,
+                location: event.location,
+                userId: event.userId
+            
+        })
+        .then(history.push("/events"))
     }
+}
+
 
     useEffect(() => {
-        getEvents().then(() => {
+        getUsers().then(getEvents).then(() => {
           if (eventId) {
             getEventById(eventId)
             .then(Event => {
@@ -53,7 +62,7 @@ export const EventForm = () => {
             setIsLoading(false)
           }
         })
-      }, [])
+    }, [])
 
     return (
         <form className="EventForm">
@@ -71,19 +80,22 @@ export const EventForm = () => {
                 </div>
             </fieldset>
             <fieldset>
-                <div className="form-group">
+                <label for="start">Event date:</label>
+                <input type="date" id="start" name="event-start" value="2020-01-10" min="2020-01-01" max="2030-12-31"/>
+                {/* <div className="form-group">
                     <label htmlFor="date">Expected Date: </label>
                     <input type="date" id="expectedDate" onChange={handleInputChange} required className="form-control" placeholder="Event Date" value={event.date} />
-                </div>
+                </div> */}
             </fieldset>
-            <button className="btn btn-primary"
+            
+            <button type = "submit" disabled={isLoading} className="btn btn-primary"
                 onClick={event => {
                     event.preventDefault()
                     saveEvent()
-                    debugger
+                    
                 }}>
                 Create Event
           </button>
         </form>
     )
-}
+            }
